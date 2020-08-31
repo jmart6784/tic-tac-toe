@@ -84,6 +84,20 @@ div {
   border: 0px;
 }
 
+#a1 {
+  border-bottom: 5px solid $grey;
+}
+
+#a2 {
+  border-right: 5px solid $grey;
+  border-left: 5px solid $grey;
+  border-bottom: 5px solid $grey;
+}
+
+#a3 {
+  border-bottom: 5px solid $grey;
+}
+
 #b1 {
   border-bottom: 5px solid $grey;
 }
@@ -98,21 +112,7 @@ div {
   border-bottom: 5px solid $grey;
 }
 
-#b4 {
-  border-bottom: 5px solid $grey;
-}
-
-#b5 {
-  border-right: 5px solid $grey;
-  border-left: 5px solid $grey;
-  border-bottom: 5px solid $grey;
-}
-
-#b6 {
-  border-bottom: 5px solid $grey;
-}
-
-#b8 {
+#c2 {
   border-right: 5px solid $grey;
   border-left: 5px solid $grey;
 }

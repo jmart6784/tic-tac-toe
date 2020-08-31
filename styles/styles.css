@@ -88,6 +88,20 @@ div {
   border: 0px;
 }
 
+#a1 {
+  border-bottom: 5px solid #707070;
+}
+
+#a2 {
+  border-right: 5px solid #707070;
+  border-left: 5px solid #707070;
+  border-bottom: 5px solid #707070;
+}
+
+#a3 {
+  border-bottom: 5px solid #707070;
+}
+
 #b1 {
   border-bottom: 5px solid #707070;
 }
@@ -102,21 +116,7 @@ div {
   border-bottom: 5px solid #707070;
 }
 
-#b4 {
-  border-bottom: 5px solid #707070;
-}
-
-#b5 {
-  border-right: 5px solid #707070;
-  border-left: 5px solid #707070;
-  border-bottom: 5px solid #707070;
-}
-
-#b6 {
-  border-bottom: 5px solid #707070;
-}
-
-#b8 {
+#c2 {
   border-right: 5px solid #707070;
   border-left: 5px solid #707070;
 }
