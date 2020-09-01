@@ -29,6 +29,9 @@ let game = (() => {
   let c2 = document.getElementById("c2");
   let c3 = document.getElementById("c3");
 
+  let flash = document.getElementById("flash");
+  let resetBtn = document.getElementById("reset");
+
   let start = () => {
     clickDom();
     render();
@@ -90,19 +93,53 @@ let game = (() => {
     };
   };
 
-  let board = [
-    ["-", "-", "-"],
-    ["-", "-",  "-"],
-    ["-", "-", "-"]
-  ];
+  let flashMsg = (type, text) => {
+    flash.textContent = text;
+
+    if (type === "error") {
+      flash.style.backgroundColor = "rgb(77, 3, 0)";
+
+      setTimeout(function() {
+        flash.style.display = "none";
+      }, 2000);
+    } else if (type === "success") {
+      flash.style.backgroundColor = "rgb(0, 90, 0)";
+
+      setTimeout(function() {
+        flash.style.display = "none";
+        reset();
+      }, 3000);
+    } else if (type === "draw") {
+      flash.style.backgroundColor = "rgb(0, 65, 109)";
+
+      setTimeout(function() {
+        flash.style.display = "none";
+        reset();
+      }, 3000);
+    };
+
+    flash.style.display = "block";
+  };
 
   let reset = () => {
-    board = [
-      ["-", "-", "-"],
-      ["-", "-",  "-"],
-      ["-", "-", "-"]
-    ];
+    player1.setTurn(true);
+    player2.setTurn(false);
+
+    a1.textContent = "-";
+    a2.textContent = "-";
+    a3.textContent = "-";
+
+    b1.textContent = "-";
+    b2.textContent = "-";
+    b3.textContent = "-";
+
+    c1.textContent = "-";
+    c2.textContent = "-";
+    c3.textContent = "-";
+    render();
   };
+
+  resetBtn.addEventListener("click", reset);
 
   let turnInfo = () => {
     if (player1.getTurn() === true) {
@@ -119,71 +156,161 @@ let game = (() => {
 
       return player2.getPiece();
     } else {
-      console.log("TURN ERROR");
+      console.log("PLAYER TURN ERROR");
     };
   };
 
   let clickDom = () => {
     // Board event listeners added
     a1.addEventListener("click", function() {
-      a1.textContent = turnInfo();
-      render();
+      if (a1.textContent === "-") {
+        a1.textContent = turnInfo();
+        render();
+        checkGameOver();
+      } else {
+        flashMsg("error", "Space taken");
+      };
     });
 
     a2.addEventListener("click", function() {
-      a2.textContent = turnInfo();
-      render();
+      if (a2.textContent === "-") {
+        a2.textContent = turnInfo();
+        render();
+        checkGameOver();
+      } else {
+        flashMsg("error", "Space taken");
+      };
     });
 
     a3.addEventListener("click", function() {
-      a3.textContent = turnInfo();
-      render();
+      if (a3.textContent === "-") {
+        a3.textContent = turnInfo();
+        render();
+        checkGameOver();
+      } else {
+        flashMsg("error", "Space taken");
+      };
     });
 
     b1.addEventListener("click", function() {
-      b1.textContent = turnInfo();
-      render();
+      if (b1.textContent === "-") {
+        b1.textContent = turnInfo();
+        render();
+        checkGameOver();
+      } else {
+        flashMsg("error", "Space taken");
+      };
     });
 
     b2.addEventListener("click", function() {
-      b2.textContent = turnInfo();
-      render();
+      if (b2.textContent === "-") {
+        b2.textContent = turnInfo();
+        render();
+        checkGameOver();
+      } else {
+        flashMsg("error", "Space taken");
+      };
     });
 
     b3.addEventListener("click", function() {
-      b3.textContent = turnInfo();
-      render();
+      if (b3.textContent === "-") {
+        b3.textContent = turnInfo();
+        render();
+        checkGameOver();
+      } else {
+        flashMsg("error", "Space taken");
+      };
     });
 
     c1.addEventListener("click", function() {
-      c1.textContent = turnInfo();
-      render();
+      if (c1.textContent === "-") {
+        c1.textContent = turnInfo();
+        render();
+        checkGameOver();
+      } else {
+        flashMsg("error", "Space taken");
+      };
     });
 
     c2.addEventListener("click", function() {
-      c2.textContent = turnInfo();
-      render();
+      if (c2.textContent === "-") {
+        c2.textContent = turnInfo();
+        render();
+        checkGameOver();
+      } else {
+        flashMsg("error", "Space taken");
+      };
     });
 
     c3.addEventListener("click", function() {
-      c3.textContent = turnInfo();
-      render();
+      if (c3.textContent === "-") {
+        c3.textContent = turnInfo();
+        render();
+        checkGameOver();
+      } else {
+        flashMsg("error", "Space taken");
+      };
     });
   };
 
-  // let checkGameOver = () => {
-
-  //   let winPositions = [
-
-  //   ];
-  // };
+  let checkGameOver = () => {
+    // Horizontal Player 1 wins
+    if (a1.textContent === "X" && a2.textContent === "X" && a3.textContent === "X") {
+      flashMsg("success", `${player1.getName()} wins the game!`);
+    } else if (b1.textContent === "X" && b2.textContent === "X" && b3.textContent === "X") {
+      flashMsg("success", `${player1.getName()} wins the game!`);
+    } else if (c1.textContent === "X" && c2.textContent === "X" && c3.textContent === "X") {
+      flashMsg("success", `${player1.getName()} wins the game!`);
+    // Vertical Player 1 wins
+    } else if (a1.textContent === "X" && b1.textContent === "X" && c1.textContent === "X") {
+      flashMsg("success", `${player1.getName()} wins the game!`);
+    } else if (a2.textContent === "X" && b2.textContent === "X" && c2.textContent === "X") {
+      flashMsg("success", `${player1.getName()} wins the game!`);
+    } else if (a3.textContent === "X" && b3.textContent === "X" && c3.textContent === "X") {
+      flashMsg("success", `${player1.getName()} wins the game!`);
+    // Diagonal Player 1 wins
+    } else if (a1.textContent === "X" && b2.textContent === "X" && c3.textContent === "X") {
+      flashMsg("success", `${player1.getName()} wins the game!`);
+    } else if (a3.textContent === "X" && b2.textContent === "X" && c1.textContent === "X") {
+      flashMsg("success", `${player1.getName()} wins the game!`);
+    // Horizontal Player 2 wins
+    } else if (a1.textContent === "O" && a2.textContent === "O" && a3.textContent === "O") {
+      flashMsg("success", `${player2.getName()} wins the game!`);
+    } else if (b1.textContent === "O" && b2.textContent === "O" && b3.textContent === "O") {
+      flashMsg("success", `${player2.getName()} wins the game!`);
+    } else if (c1.textContent === "O" && c2.textContent === "O" && c3.textContent === "O") {
+      flashMsg("success", `${player2.getName()} wins the game!`);
+    // Vertical Player 2 wins  
+    } else if (a1.textContent === "O" && b1.textContent === "O" && c1.textContent === "O") {
+      flashMsg("success", `${player2.getName()} wins the game!`);
+    } else if (a2.textContent === "O" && b2.textContent === "O" && c2.textContent === "O") {
+      flashMsg("success", `${player2.getName()} wins the game!`);
+    } else if (a3.textContent === "O" && b3.textContent === "O" && c3.textContent === "O") {
+      flashMsg("success", `${player2.getName()} wins the game!`);
+    // Diagonal Player 2 wins
+    } else if (a1.textContent === "O" && b2.textContent === "O" && c3.textContent === "O") {
+      flashMsg("success", `${player2.getName()} wins the game!`);
+    } else if (a3.textContent === "O" && b2.textContent === "O" && c1.textContent === "O") {
+      flashMsg("success", `${player2.getName()} wins the game!`);
+    // Check for draw
+    } else if (
+      a1.textContent !== "-" &&
+      a2.textContent !== "-" &&
+      a3.textContent !== "-" &&
+      b1.textContent !== "-" &&
+      b2.textContent !== "-" &&
+      b3.textContent !== "-" &&
+      c1.textContent !== "-" &&
+      c2.textContent !== "-" &&
+      c3.textContent !== "-"
+    ) {
+      console.log("DRAW");
+      flashMsg("draw", "It's a Draw!");
+    };
+  };
 
   return {
-    start,
-    board,
-    reset,
-    clickDom,
-    // checkGameOver
+    start
   };
 })();
 
