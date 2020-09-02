@@ -3,17 +3,19 @@ let Player = (name, piece, turn) => {
   let getPiece = () => piece;
   let getTurn = () => turn;
 
+  let setName = (newName) => name = newName;
   let setTurn = (update) => turn = update;
   return {
     getName,
+    setName,
     getPiece,
     getTurn,
     setTurn
   };
 };
 
-let player1 = Player("Player1", "X", true);
-let player2 = Player("Player2", "O", false);
+let player1 = Player("Player 1", "X", true);
+let player2 = Player("Player 2", "O", false);
 
 let game = (() => {
   // DOM board selection
@@ -32,12 +34,47 @@ let game = (() => {
   let flash = document.getElementById("flash");
   let resetBtn = document.getElementById("reset");
 
+  // DOM player info
+  let player1Name = document.getElementById("p1-name");
+  let p1Input = document.getElementById("p1-change");
+  let p1Submit = document.getElementById("p1-submit");
+
+  let player2Name = document.getElementById("p2-name");
+  let p2Input = document.getElementById("p2-change");
+  let p2Submit = document.getElementById("p2-submit");
+
+  // Change Player name with form
+  p1Submit.addEventListener("click", function() {
+    if (p1Input.value === "" || !(p1Input.value.length <= 20)) {
+      p1Input.value = "";
+      flashMsg("error", "Name cannot exceed 20 characters or be Empty");
+    } else {
+      player1.setName(p1Input.value);
+      player1Name.textContent = player1.getName();
+    };
+  });
+
+  p2Submit.addEventListener("click", function() {
+    if (p2Input.value === "" || !(p2Input.value.length <= 20)) {
+      p2Input.value = "";
+      flashMsg("error", "Name cannot exceed 20 characters or be Empty");
+    } else {
+      player2.setName(p2Input.value);
+      player2Name.textContent = player2.getName();
+    };
+  });
+
   let start = () => {
     clickDom();
     render();
   };
 
   let render = () => {
+    // Load Player name in DOM
+    player1Name.textContent = player1.getName();
+    player2Name.textContent = player2.getName();
+
+    // Change color according to text content
     if (a1.textContent === "-") {
       a1.style.color = "black";
     } else {
@@ -101,7 +138,7 @@ let game = (() => {
 
       setTimeout(function() {
         flash.style.display = "none";
-      }, 2000);
+      }, 3000);
     } else if (type === "success") {
       flash.style.backgroundColor = "rgb(0, 90, 0)";
 

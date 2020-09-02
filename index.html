@@ -11,29 +11,61 @@
   <div id="container">
     <div id="flash"></div>
 
-    <div id="board">
-
-      <div id="a1" class="spot">-</div>
-
-      <div id="a2" class="spot">-</div>
-
-      <div id="a3" class="spot">-</div>
-
-      <div id="b1" class="spot">-</div>
-
-      <div id="b2" class="spot">-</div>
-
-      <div id="b3" class="spot">-</div>
-
-      <div id="c1" class="spot">-</div>
-
-      <div id="c2" class="spot">-</div>
-
-      <div id="c3" class="spot">-</div>
-
+    <div id="title">
+      <h1>Tic Tac Toe</h1>
     </div>
 
-    <button id="reset">RESET</button>
+    <div id="game">
+      <div class="p-info">
+        <h1 id="p1-name" class="p-title"></h1>
+
+        <div class="input-div">
+          <input id="p1-change" class="p-input" type="text" placeholder="Change name...">
+          <button id="p1-submit" class="p-btn">Submit</button>
+        </div>
+
+        <div class="score">Score: <span id="p1-score">0</span></div>
+      </div>
+
+      <div id="board">
+
+        <div id="a1" class="spot">-</div>
+  
+        <div id="a2" class="spot">-</div>
+  
+        <div id="a3" class="spot">-</div>
+  
+        <div id="b1" class="spot">-</div>
+  
+        <div id="b2" class="spot">-</div>
+  
+        <div id="b3" class="spot">-</div>
+  
+        <div id="c1" class="spot">-</div>
+  
+        <div id="c2" class="spot">-</div>
+  
+        <div id="c3" class="spot">-</div>
+  
+      </div>
+
+      <div class="p-info">
+        <h1 id="p2-name" class="p-title"></h1>
+
+        <div class="input-div">
+          <input id="p2-change" class="p-input" type="text" placeholder="Change name...">
+          <button id="p2-submit" class="p-btn">Submit</button>
+        </div>
+
+        <div class="score">Score: <span id="p2-score">0</span></div>
+      </div>
+    </div>
+
+    <div id="reset-div">
+      <div></div>
+      <button id="reset">RESET</button>
+      <div></div>
+    </div>
   </div>
   
   <script src="app.js"></script>
