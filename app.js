@@ -68,7 +68,7 @@ let game = (() => {
     } else {
       player2.setName(p2Input.value);
       player2Name.textContent = player2.getName();
-      p1Input.value = "";
+      p2Input.value = "";
     };
   });
 
@@ -184,7 +184,18 @@ let game = (() => {
     render();
   };
 
-  resetBtn.addEventListener("click", reset);
+  // Reset all resets the score
+  let resetAll = () => {
+    player1.setScore(0);
+    p1Score.textContent = player1.getScore();
+
+    player2.setScore(0);
+    p2Score.textContent = player2.getScore();
+    
+    reset();
+  };
+
+  resetBtn.addEventListener("click", resetAll);
 
   let turnInfo = () => {
     if (player1.getTurn() === true) {
