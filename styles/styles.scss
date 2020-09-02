@@ -49,6 +49,10 @@ table {
 
 $grey: rgb(112, 112, 112);
 
+* {
+  font-family: 'Exo', sans-serif;
+}
+
 body {
   background-color: rgb(36, 36, 36);
 }
@@ -60,6 +64,7 @@ div {
 #flash {
   display: none;
   background-color: rgb(0, 90, 0);
+  color: white;
   font-weight: 900;
   padding: 20px 0 20px 0;
   font-size: 30px;

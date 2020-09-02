@@ -50,6 +50,10 @@ table {
   border-spacing: 0;
 }
 
+* {
+  font-family: 'Exo', sans-serif;
+}
+
 body {
   background-color: #242424;
 }
@@ -61,6 +65,7 @@ div {
 #flash {
   display: none;
   background-color: #005a00;
+  color: white;
   font-weight: 900;
   padding: 20px 0 20px 0;
   font-size: 30px;
